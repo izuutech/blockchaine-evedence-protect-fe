@@ -7,7 +7,7 @@ function Header({ simple, hideAuth }) {
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom">
         <div className="container">
-          <Link href="/" className="navbar-brand">
+          <Link href="/" className="navbar-brand" passHref>
             {/* <a className="navbar-brand"> */}
             {/* <FontAwesomeIcon
                 icon={["fas", "shopping-basket"]}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import EvidenceItem from "../components/evidenceItem";
 import Layout from "../components/layout";
 
@@ -10,10 +11,10 @@ function Evidences() {
             <nav aria-label="breadcrumb col-12">
               <ol className="breadcrumb mb-1">
                 <li className="breadcrumb-item">
-                  <a href="/">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  <a href="/cases">Cases</a>
+                  <Link href="/cases">Cases</Link>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
                   Evidences
@@ -24,12 +25,12 @@ function Evidences() {
         </div>
       </div>
       <div className="container py-4">
-        <a
+        <Link
           href="/upload-evidence"
           className="btn btn-primary px-md-4 col-3 py-2 mb-4"
         >
           Upload Evidence
-        </a>
+        </Link>
         <div className="row g-3">
           <div className="col-lg-9">
             <EvidenceItem id={20001} />
