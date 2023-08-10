@@ -28,8 +28,9 @@ export default function Home() {
                 </div>
                 <h5 className="mb-1 fw-bold">100% Secure</h5>
                 <figcaption className="figure-caption text-dark">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Blockchain encryption ensures data security through advanced
+                  cryptography. This trustless ecosystem resists attacks and
+                  unauthorized changes.
                 </figcaption>
               </figure>
             </div>
@@ -49,8 +50,9 @@ export default function Home() {
                 </div>
                 <h5 className="mb-1 fw-bold">Customer Support 24/7</h5>
                 <figcaption className="figure-caption text-dark">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Our customer support for blockchain is swift, offering timely
+                  assistance. We provide quick solutions, ensuring smooth
+                  operations and optimal blockchain utilization for our clients.
                 </figcaption>
               </figure>
             </div>
@@ -70,8 +72,9 @@ export default function Home() {
                 </div>
                 <h5 className="mb-1 fw-bold">Fast Process</h5>
                 <figcaption className="figure-caption text-dark">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Blockchain enables swift, private transactions through
+                  techniques like zero-knowledge proofs, ensuring secure data
+                  sharing without compromising speed.
                 </figcaption>
               </figure>
             </div>

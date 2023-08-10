@@ -24,6 +24,12 @@ function Evidences() {
         </div>
       </div>
       <div className="container py-4">
+        <a
+          href="/upload-evidence"
+          className="btn btn-primary px-md-4 col-3 py-2 mb-4"
+        >
+          Upload Evidence
+        </a>
         <div className="row g-3">
           <div className="col-lg-9">
             <EvidenceItem id={20001} />
