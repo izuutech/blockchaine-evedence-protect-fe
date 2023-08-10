@@ -1,7 +1,7 @@
-import CaseItem from "../../components/account/caseItem";
-import Layout from "../../components/layout";
+import EvidenceItem from "../components/evidenceItem";
+import Layout from "../components/layout";
 
-function OrderHistory() {
+function Evidences() {
   return (
     <div>
       <div className="bg-secondary">
@@ -10,10 +10,13 @@ function OrderHistory() {
             <nav aria-label="breadcrumb col-12">
               <ol className="breadcrumb mb-1">
                 <li className="breadcrumb-item">
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  Order History
+                  <a href="/cases">Cases</a>
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Evidences
                 </li>
               </ol>
             </nav>
@@ -22,9 +25,9 @@ function OrderHistory() {
       </div>
       <div className="container py-4">
         <div className="row g-3">
-          <div className="col-lg-12">
-            <CaseItem id={20001} />
-            <CaseItem id={20002} cancel />
+          <div className="col-lg-9">
+            <EvidenceItem id={20001} />
+            <EvidenceItem id={20002} cancel />
 
             <nav className="float-end mt-3">
               <ul className="pagination">
@@ -65,8 +68,8 @@ function OrderHistory() {
   );
 }
 
-OrderHistory.getLayout = (page) => {
+Evidences.getLayout = (page) => {
   return <Layout simpleHeader>{page}</Layout>;
 };
 
-export default OrderHistory;
+export default Evidences;

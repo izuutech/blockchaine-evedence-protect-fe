@@ -8,10 +8,7 @@ export default function Home() {
       <div className="container py-3">
         <div className="row col-12">
           <div className="col-3 py-4"></div>
-          <a
-            href="/account/profile"
-            className="btn btn-primary px-md-4 col-6 py-4 mb-4"
-          >
+          <a href="/cases" className="btn btn-primary px-md-4 col-6 py-4 mb-4">
             Integrate wallet
           </a>
         </div>

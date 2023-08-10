@@ -1,4 +1,4 @@
-import CaseItem from "../components/account/caseItem";
+import CaseItem from "../components/caseItem";
 import Layout from "../components/layout";
 
 function Cases() {
@@ -10,7 +10,7 @@ function Cases() {
             <nav aria-label="breadcrumb col-12">
               <ol className="breadcrumb mb-1">
                 <li className="breadcrumb-item">
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
                   Cases
