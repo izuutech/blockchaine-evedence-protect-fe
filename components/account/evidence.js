@@ -1,5 +1,4 @@
-import AccountMenu from "../../components/account-menu";
-import OrderHistoryItem from "../../components/account/order-history-item";
+import CaseItem from "../../components/account/caseItem";
 import Layout from "../../components/layout";
 
 function OrderHistory() {
@@ -23,12 +22,9 @@ function OrderHistory() {
       </div>
       <div className="container py-4">
         <div className="row g-3">
-          <div className="col-lg-3">
-            <AccountMenu current="order-history" />
-          </div>
-          <div className="col-lg-9">
-            <OrderHistoryItem id={20001} />
-            <OrderHistoryItem id={20002} cancel />
+          <div className="col-lg-12">
+            <CaseItem id={20001} />
+            <CaseItem id={20002} cancel />
 
             <nav className="float-end mt-3">
               <ul className="pagination">

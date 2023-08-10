@@ -1,8 +1,7 @@
-import AccountMenu from "../../components/account-menu";
-import FavoriteProduct from "../../components/account/favorite-product";
-import Layout from "../../components/layout";
+import CaseItem from "../components/account/caseItem";
+import Layout from "../components/layout";
 
-function FavoriteList() {
+function Cases() {
   return (
     <div>
       <div className="bg-secondary">
@@ -14,7 +13,7 @@ function FavoriteList() {
                   <a href="#">Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  My Favorites
+                  Cases
                 </li>
               </ol>
             </nav>
@@ -23,27 +22,10 @@ function FavoriteList() {
       </div>
       <div className="container py-4">
         <div className="row g-3">
-          <div className="col-lg-3">
-            <AccountMenu current="favorite-list" />
-          </div>
           <div className="col-lg-9">
-            <div className="row row-cols-1 row-cols-md-2 g-3">
-              <div className="col">
-                <FavoriteProduct />
-              </div>
-              <div className="col">
-                <FavoriteProduct />
-              </div>
-              <div className="col">
-                <FavoriteProduct />
-              </div>
-              <div className="col">
-                <FavoriteProduct />
-              </div>
-              <div className="col">
-                <FavoriteProduct />
-              </div>
-            </div>
+            <CaseItem id={20001} />
+            <CaseItem id={20002} cancel />
+
             <nav className="float-end mt-3">
               <ul className="pagination">
                 <li className="page-item">
@@ -83,8 +65,8 @@ function FavoriteList() {
   );
 }
 
-FavoriteList.getLayout = (page) => {
+Cases.getLayout = (page) => {
   return <Layout simpleHeader>{page}</Layout>;
 };
 
-export default FavoriteList;
+export default Cases;

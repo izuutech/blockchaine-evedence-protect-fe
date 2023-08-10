@@ -10,12 +10,12 @@ function Layout({ simpleHeader, hideAuth, children }) {
         <meta name="theme-color" content="#ffffff" />
         <meta name="description" content="Best e-commerce app" />
         <link rel="icon" href="/favicon.ico" />
-        <title>Mocha Mart</title>
+        <title>Evidence Protection system</title>
       </Head>
       <div className="d-flex flex-column h-100">
         <Header simple={simpleHeader} hideAuth={hideAuth} />
         <main className="flex-shrink-0">{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );
