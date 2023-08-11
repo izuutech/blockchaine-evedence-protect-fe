@@ -1,20 +1,42 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { useAccount, useConnect } from "wagmi";
+import { InjectedConnector } from "wagmi/connectors/injected";
 
 export default function Home() {
   const list = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  const { address } = useAccount();
+
+  const { connect } = useConnect({
+    chainId: 80001,
+    connector: new InjectedConnector(),
+    onSuccess() {
+      // navigate to the next page
+      // navigate({
+      //   pathname: '/cases',
+      //   search: `?connectedAddress=${address}`,
+      },
+    onError() {
+      // display connection error message
+    },
+  });
+
 
   return (
     <div>
       <div className="container py-3">
         <div className="row col-12">
           <div className="col-3 py-4"></div>
-          <Link
+          {/* <Link
             href="/cases"
             className="btn btn-primary px-md-4 col-6 py-4 mb-4"
-          >
-            Integrate wallet
-          </Link>
+          > */}
+          <button onClick={connect}
+          className="btn btn-primary px-md-4 col-6 py-4 mb-4">
+            Connect wallet
+            </button>
+          {/* </Link> */}
         </div>
         <div className="row row-cols-1 row-cols-md-3 g-3 mb-4">
           <div className="col">

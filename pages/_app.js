@@ -8,12 +8,50 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import Layout from "../components/layout";
 
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
+
 config.autoAddCss = false;
 library.add(fab, fas, far);
 
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap.bundle.min.js");
 }
+
+const fvmChain = {
+  id: 80001,
+  name: "Mumbai testnet",
+  network: "polygon testnet",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Testnet matic",
+    symbol: "MATIC",
+  },
+  rpcUrls: {
+    default: "https://rpc-mumbai.maticvigil.com/",
+  },
+  blockExplorers: {
+    default: { name: "Polyscan", url: "https://polygonscan.com/" },
+  },
+  testnet: true,
+};
+const { chains, provider, webSocketProvider } = configureChains(
+  [fvmChain],
+  [
+    jsonRpcProvider({
+      rpc: (chain) => {
+        if (chain.id !== fvmChain.id) return null;
+        return { http: chain.rpcUrls.default };
+      },
+    }),
+  ]
+);
+
+const client = createClient({
+  autoConnect: true,
+  provider,
+  webSocketProvider,
+});
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout;
@@ -22,9 +60,11 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+      <WagmiConfig client ={client}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+        </WagmiConfig>
   );
 }
 
