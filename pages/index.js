@@ -2,22 +2,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { useAccount, useConnect } from "wagmi";
+import { useWalletClient } from 'wagmi';
 import { InjectedConnector } from "wagmi/connectors/injected";
 
 export default function Home() {
+  const { data: walletClient } = useWalletClient();
   const router = useRouter();
-
-  const { address } = useAccount();
 
   const { connect } = useConnect({
     chainId: 80001,
     connector: new InjectedConnector(),
     onSuccess() {
       // navigate to the next page
-      // navigate({
-      //   pathname: '/cases',
-      //   search: `?connectedAddress=${address}`,
-      router.push("/cases?connectedAddress=${address}");
+      router.push("/cases");
+      console.log(walletClient);
     },
     onError(e) {
       // display connection error message

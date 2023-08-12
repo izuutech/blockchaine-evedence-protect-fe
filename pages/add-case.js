@@ -1,7 +1,14 @@
 import { useRouter } from "next/router";
 import Layout from "../components/layout";
+import { useWalletClient, usePublicClient } from 'wagmi';
+import { toast } from "react-toastify";
+import { createCaseFolder } from "../utils/createCaseFolder";
+import { polygonMumbai } from "wagmi/chains";
 
 function AddCase() {
+  const { data: walletClient } = useWalletClient(polygonMumbai);
+  const publicClient = usePublicClient();
+
   const router = useRouter();
   return (
     <div className="container py-3">
@@ -27,8 +34,15 @@ function AddCase() {
                   <button
                     type="button"
                     className="btn btn-primary w-100"
-                    onClick={() => {
-                      router.push({ pathname: "/evidences" });
+                    onClick={async () => {
+                      try {
+                        await createCaseFolder(publicClient, walletClient, "Name", "Description");
+                        router.push("/cases");
+                      } catch (error) {
+                        toast.error("You might not be authorized to call this function");
+                        console.log(error, walletClient);
+                      }
+                      // router.push({ pathname: "/evidences" });
                     }}
                   >
                     Submit
@@ -47,8 +61,8 @@ function AddCase() {
   );
 }
 
-AddCase.getLayout = (page) => {
-  return <Layout simpleHeader>{page}</Layout>;
-};
+// AddCase.getLayout = (page) => {
+//   return <Layout simpleHeader>{page}</Layout>;
+// };
 
 export default AddCase;

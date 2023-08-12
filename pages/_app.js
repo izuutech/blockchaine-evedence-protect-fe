@@ -9,9 +9,10 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import Layout from "../components/layout";
-
-import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
+import { createPublicClient, http } from 'viem';
+import { WagmiConfig, createConfig, configureChains } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+import { polygonMumbai } from 'wagmi/chains';
 
 config.autoAddCss = false;
 library.add(fab, fas, far);
@@ -20,39 +21,19 @@ if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap.bundle.min.js");
 }
 
-const fvmChain = {
-  id: 80001,
-  name: "Mumbai testnet",
-  network: "polygon testnet",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Testnet matic",
-    symbol: "MATIC",
-  },
-  rpcUrls: {
-    default: "https://rpc-mumbai.maticvigil.com/",
-  },
-  blockExplorers: {
-    default: { name: "Polyscan", url: "https://polygonscan.com/" },
-  },
-  testnet: true,
-};
-const { chains, provider, webSocketProvider } = configureChains(
-  [fvmChain],
-  [
-    jsonRpcProvider({
-      rpc: (chain) => {
-        if (chain.id !== fvmChain.id) return null;
-        return { http: chain.rpcUrls.default };
-      },
-    }),
-  ]
+const {
+  chains,
+  publicClient,
+  webSocketPublicClient
+} = configureChains(
+  [polygonMumbai],
+  [publicProvider()],
 );
-
-const client = createClient({
+ 
+const _config = createConfig({
   autoConnect: true,
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient
 });
 
 function MyApp({ Component, pageProps }) {
@@ -62,7 +43,8 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <WagmiConfig client={client}>
+    <div suppressHydrationWarning>
+      <WagmiConfig config={_config}>
       <Layout>
         <Component {...pageProps} />
         <ToastContainer
@@ -79,6 +61,7 @@ function MyApp({ Component, pageProps }) {
         />
       </Layout>
     </WagmiConfig>
+    </div>
   );
 }
 
