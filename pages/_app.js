@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/bootstrap-custom.css";
 import "../styles/globals.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -60,11 +62,23 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-      <WagmiConfig client ={client}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-        </WagmiConfig>
+    <WagmiConfig client={client}>
+      <Layout>
+        <Component {...pageProps} />
+        <ToastContainer
+          position="top-left"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </Layout>
+    </WagmiConfig>
   );
 }
 

@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 import { useAccount, useConnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
 
@@ -18,8 +19,9 @@ export default function Home() {
       //   search: `?connectedAddress=${address}`,
       router.push("/cases?connectedAddress=${address}");
     },
-    onError() {
+    onError(e) {
       // display connection error message
+      toast.error("Error occured");
     },
   });
 
