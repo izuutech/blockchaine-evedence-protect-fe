@@ -22,6 +22,12 @@ function Cases() {
         </div>
       </div>
       <div className="container py-4">
+        <Link
+          href="/add-case"
+          className="btn btn-primary px-md-4 col-3 py-2 mb-4"
+        >
+          Create Case
+        </Link>
         <div className="row g-3">
           <div className="col-lg-9">
             <CaseItem id={20001} />
