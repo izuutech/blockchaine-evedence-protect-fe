@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useAccount, useConnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
 
 export default function Home() {
-  const list = [1, 2, 3, 4, 5, 6, 7, 8];
+  const router = useRouter();
 
   const { address } = useAccount();
 
@@ -16,12 +16,12 @@ export default function Home() {
       // navigate({
       //   pathname: '/cases',
       //   search: `?connectedAddress=${address}`,
-      },
+      router.push("/cases?connectedAddress=${address}");
+    },
     onError() {
       // display connection error message
     },
   });
-
 
   return (
     <div>
@@ -32,10 +32,12 @@ export default function Home() {
             href="/cases"
             className="btn btn-primary px-md-4 col-6 py-4 mb-4"
           > */}
-          <button onClick={connect}
-          className="btn btn-primary px-md-4 col-6 py-4 mb-4">
+          <button
+            onClick={connect}
+            className="btn btn-primary px-md-4 col-6 py-4 mb-4"
+          >
             Connect wallet
-            </button>
+          </button>
           {/* </Link> */}
         </div>
         <div className="row row-cols-1 row-cols-md-3 g-3 mb-4">
