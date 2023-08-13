@@ -4,36 +4,27 @@ import { toast } from "react-toastify";
 import { useAccount, useConnect } from "wagmi";
 import { useWalletClient } from 'wagmi';
 import { InjectedConnector } from "wagmi/connectors/injected";
+import { connectWallet } from "../utils/main";
 
 export default function Home() {
   const { data: walletClient } = useWalletClient();
   const router = useRouter();
-
-  const { connect } = useConnect({
-    chainId: 80001,
-    connector: new InjectedConnector(),
-    onSuccess() {
-      // navigate to the next page
-      router.push("/cases");
-      console.log(walletClient);
-    },
-    onError(e) {
-      // display connection error message
-      toast.error("Error occured");
-    },
-  });
 
   return (
     <div>
       <div className="container py-3">
         <div className="row col-12">
           <div className="col-3 py-4"></div>
-          {/* <Link
-            href="/cases"
-            className="btn btn-primary px-md-4 col-6 py-4 mb-4"
-          > */}
           <button
-            onClick={connect}
+                    onClick={async () => {
+                      try {
+                        await connectWallet();
+                        router.push("/cases");
+                      } catch (error) {
+                        toast.error("You might not be authorized to call this function");
+                        console.log(error, publicClient, walletClient);
+                      }
+                    }}
             className="btn btn-primary px-md-4 col-6 py-4 mb-4"
           >
             Connect wallet
