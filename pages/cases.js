@@ -5,15 +5,16 @@ import Layout from "../components/layout";
 import { getCasefolders } from "../utils/main";
 
 function Cases() {
-  const arr = [1, 2, 3, 4, 5, 6];
+  const [cases, setCases] = useState([1, 2, 3, 4, 5, 6]);
   useEffect(() => {
     const getTheFolders = async () => {
-      const m = await getCasefolders();
-      console.log(m);
+      const result = await getCasefolders();
+      console.log(result);
+      if (result && Array.isArray(result)) {
+        setCases([...result]);
+      }
     };
-
     getTheFolders();
-    // console.log(m);
   }, []);
   return (
     <div>
@@ -42,7 +43,7 @@ function Cases() {
         </Link>
         <div className="row g-3">
           <div className="col-lg-9">
-            {/* {arr && arr.map((ar) => <CaseItem id={1} />)} */}
+            {/* {cases && cases.map((case) => <CaseItem id={1} case={case} />)} */}
             <CaseItem id={2} cancel />
 
             <nav className="float-end mt-3">
