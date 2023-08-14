@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { getCaseFiles, displayFile } from "../utils/main";
+import { getCaseFiles, displayFile, getCasefolders } from "../utils/main";
 import { useEffect } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 
@@ -17,19 +17,13 @@ function CaseItem({ id, cancel }) {
               onClick={async () => {
                 try {
                   // pass in the name and details updates
-                  const files = await getCaseFiles(1);
-                  const index = files.length - 1;
-                  const evidenceURL = await displayFile(files[index]);
-                  // useEffect(() => {
-                  //   const timeout = setTimeout(() => {
-                  //     // 👇️ redirects to an external URL
-                  //     window.location.replace(evidenceURL);
-                  //   }, 1000);
-                
-                  //   return () => clearTimeout(timeout);
-                  // }, []);
-                  window.location.replace(evidenceURL);
-                  console.log(evidenceURL);
+                  // const files = await getCaseFiles(1);
+                  // const index = files.length - 1;
+                  // const evidenceURL = await displayFile(files[index]);
+                  // window.location.replace(evidenceURL);
+                  // console.log(evidenceURL);
+                  const folders = await getCasefolders();
+                  console.log(folders);
                   return <>redirecting to IPFS</>;
                   //router.push("/evidences");
                 } catch (error) {
