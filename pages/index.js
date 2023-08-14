@@ -1,13 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import { useAccount, useConnect } from "wagmi";
-import { useWalletClient } from 'wagmi';
-import { InjectedConnector } from "wagmi/connectors/injected";
 import { connectWallet } from "../utils/main";
 
 export default function Home() {
-  const { data: walletClient } = useWalletClient();
   const router = useRouter();
 
   return (
@@ -22,14 +18,13 @@ export default function Home() {
                         router.push("/cases");
                       } catch (error) {
                         toast.error("You might not be authorized to call this function");
-                        console.log(error, publicClient, walletClient);
+                        console.log(error);
                       }
                     }}
             className="btn btn-primary px-md-4 col-6 py-4 mb-4"
           >
             Connect wallet
           </button>
-          {/* </Link> */}
         </div>
         <div className="row row-cols-1 row-cols-md-3 g-3 mb-4">
           <div className="col">

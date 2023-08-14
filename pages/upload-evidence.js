@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import Layout from "../components/layout";
+import { ToastContainer, toast } from "react-toastify";
+import { addFile } from "../utils/main";
 
 function UploadEvidence() {
   const router = useRouter();
@@ -17,23 +19,33 @@ function UploadEvidence() {
                     type="text"
                     className="form-control"
                     placeholder="Evidence Name"
+                    id="name"
                   />
                 </div>
                 <div className="col-md-12">
-                  <label className="form-label">Test data</label>
-                  <input type="text" className="form-control" />
+                  <label className="form-label">details</label>
+                  <input type="text" className="form-control" id=""/>
                 </div>
                 <div className="col-md-12">
-                  <label className="form-label">File</label>
-                  <input type="file" className="form-control" />
+                  <label className="form-label">Evidence</label>
+                  <input type="file" className="form-control" id="files" />
                 </div>
 
                 <div className="col-md-12 mt-4">
                   <button
                     type="button"
                     className="btn btn-primary w-100"
-                    onClick={() => {
-                      router.push({ pathname: "/evidences" });
+                    onClick={async () => {
+                      try {
+                        const fileInput = document.querySelector('input[type="file"]');
+                        toast.loading("uploading file ...");
+                        await addFile(fileInput.files);
+                        router.push("/cases");
+                        // console.log(file.value);
+                      } catch (error) {
+                        toast.error("You might not be authorized to call this function");
+                        console.log(error);
+                      }
                     }}
                   >
                     Upload

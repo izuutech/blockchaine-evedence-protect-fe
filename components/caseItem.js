@@ -11,10 +11,16 @@ function CaseItem({ id, cancel }) {
           </div>
           <div className="col-auto">
             <button
-              onClick={() => router.push("/evidences")}
+              onClick={() => router.push(`evidences`)}
               className="btn btn-sm btn-outline-primary"
             >
               View Evidences
+            </button>
+            <button
+              onClick={() => router.push(`upload-evidence`)}
+              className="btn btn-sm btn-outline-primary"
+            >
+              Upload Evidence
             </button>
           </div>
         </div>

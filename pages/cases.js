@@ -30,8 +30,8 @@ function Cases() {
         </Link>
         <div className="row g-3">
           <div className="col-lg-9">
-            <CaseItem id={20001} />
-            <CaseItem id={20002} cancel />
+            <CaseItem id={1} />
+            <CaseItem id={2} cancel />
 
             <nav className="float-end mt-3">
               <ul className="pagination">
