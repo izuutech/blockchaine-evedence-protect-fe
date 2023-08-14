@@ -5,6 +5,7 @@ import Layout from "../components/layout";
 import { getCasefolders } from "../utils/main";
 
 function Cases() {
+  const arr = [1, 2, 3, 4, 5, 6];
   useEffect(() => {
     const getTheFolders = async () => {
       const m = await getCasefolders();
@@ -41,7 +42,7 @@ function Cases() {
         </Link>
         <div className="row g-3">
           <div className="col-lg-9">
-            <CaseItem id={1} />
+            {/* {arr && arr.map((ar) => <CaseItem id={1} />)} */}
             <CaseItem id={2} cancel />
 
             <nav className="float-end mt-3">
