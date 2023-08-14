@@ -1,4 +1,7 @@
 import { useRouter } from "next/router";
+import { getCaseFiles, displayFile } from "../utils/main";
+import { useEffect } from 'react';
+import { ToastContainer, toast } from "react-toastify";
 
 function CaseItem({ id, cancel }) {
   const router = useRouter();
@@ -11,7 +14,29 @@ function CaseItem({ id, cancel }) {
           </div>
           <div className="col-auto">
             <button
-              onClick={() => router.push(`evidences`)}
+              onClick={async () => {
+                try {
+                  // pass in the name and details updates
+                  const files = await getCaseFiles(1);
+                  const index = files.length - 1;
+                  const evidenceURL = await displayFile(files[index]);
+                  // useEffect(() => {
+                  //   const timeout = setTimeout(() => {
+                  //     // 👇️ redirects to an external URL
+                  //     window.location.replace(evidenceURL);
+                  //   }, 1000);
+                
+                  //   return () => clearTimeout(timeout);
+                  // }, []);
+                  window.location.replace(evidenceURL);
+                  console.log(evidenceURL);
+                  return <>redirecting to IPFS</>;
+                  //router.push("/evidences");
+                } catch (error) {
+                  toast.error("ann error occured");
+                  console.log(error);
+                }
+              }}
               className="btn btn-sm btn-outline-primary"
             >
               View Evidences
