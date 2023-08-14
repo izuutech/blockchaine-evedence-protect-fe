@@ -1,8 +1,19 @@
 import Link from "next/link";
+import { useEffect } from "react";
 import CaseItem from "../components/caseItem";
 import Layout from "../components/layout";
+import { getCasefolders } from "../utils/main";
 
 function Cases() {
+  useEffect(() => {
+    const getTheFolders = async () => {
+      const m = await getCasefolders();
+      console.log(m);
+    };
+
+    getTheFolders();
+    // console.log(m);
+  }, []);
   return (
     <div>
       <div className="bg-secondary">
