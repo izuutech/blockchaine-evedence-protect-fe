@@ -3,7 +3,7 @@ import { contractABI } from "./EvidenceManagerContractABI";
 import { Web3Storage } from "web3.storage";
 require("dotenv").config();
 
-const contractAddress = "0xd521425a7aC6FaDb22ff2755465B80781dbaAc72";
+const contractAddress = "0x7F8B14183615BA9C8a61472aeD45c47C20409C23";
 
 var provider;
 var signer;
