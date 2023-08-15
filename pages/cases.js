@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CaseItem from "../components/caseItem";
 import Layout from "../components/layout";
 import { getCasefolders } from "../utils/main";
@@ -7,14 +7,14 @@ import { getCasefolders } from "../utils/main";
 function Cases() {
   const [cases, setCases] = useState([1, 2, 3, 4, 5, 6]);
   useEffect(() => {
-    const getTheFolders = async () => {
-      const result = await getCasefolders();
-      console.log(result);
-      if (result && Array.isArray(result)) {
-        setCases([...result]);
-      }
-    };
-    getTheFolders();
+    // const getTheFolders = async () => {
+    //   const result = await getCasefolders();
+    //   console.log(result);
+    //   if (result && Array.isArray(result)) {
+    //     setCases([...result]);
+    //   }
+    // };
+    // getTheFolders();
   }, []);
   return (
     <div>
@@ -43,7 +43,10 @@ function Cases() {
         </Link>
         <div className="row g-3">
           <div className="col-lg-9">
-            {/* {cases && cases.map((case) => <CaseItem id={1} case={case} />)} */}
+            {cases &&
+              cases.map((casee, index) => (
+                <CaseItem key={index} item={casee} />
+              ))}
             <CaseItem id={2} cancel />
 
             <nav className="float-end mt-3">
