@@ -35,8 +35,7 @@ function AddCase() {
                       const name = document.getElementById("name");
                       const details = document.getElementById("details");
                       try {
-                        // pass in the name and details updates
-                        await createFolder(name, details);
+                        await createFolder(name.value, details.value);
                         router.push("/cases");
                       } catch (error) {
                         toast.error("You might not be authorized to call this function");

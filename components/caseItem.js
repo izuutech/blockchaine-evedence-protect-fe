@@ -17,13 +17,13 @@ function CaseItem({ id, cancel }) {
               onClick={async () => {
                 try {
                   // pass in the name and details updates
-                  // const files = await getCaseFiles(1);
-                  // const index = files.length - 1;
-                  // const evidenceURL = await displayFile(files[index]);
-                  // window.location.replace(evidenceURL);
+                  const files = await getCaseFiles(1);
+                  const index = files.length - 1;
+                  const evidenceURL = await displayFile(files[index]);
+                  window.location.replace(evidenceURL);
                   // console.log(evidenceURL);
-                  const folders = await getCasefolders();
-                  console.log(folders);
+                  // const folders = await getCasefolders();
+                  // console.log(folders);
                   return <>redirecting to IPFS</>;
                   //router.push("/evidences");
                 } catch (error) {
