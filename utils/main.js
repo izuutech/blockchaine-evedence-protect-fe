@@ -3,7 +3,7 @@ import { contractABI } from "./EvidenceManagerContractABI";
 import { Web3Storage } from "web3.storage";
 require("dotenv").config();
 
-const contractAddress = "0x7F8B14183615BA9C8a61472aeD45c47C20409C23";
+const contractAddress = "0xABCf6f5A203D85F4e8bd6b3094A77A6de6dd8Ff5";
 
 var provider;
 var signer;
@@ -36,11 +36,23 @@ export const createFolder = async (name, details) => {
   Contract.createCaseFolder(name, details);
 };
 
-export const getCasefolders = async () => {
-  const Contract = new ethers.Contract(contractAddress, contractABI, provider);
 
-  const folders = await Contract.getCaseFolders();
-  return folders;
+export const getCasefolders = async () => {
+  const Contract = new ethers.Contract(contractAddress, contractABI, signer);
+  const counter = await Contract.getCounter();
+  var obj = new Object();
+  const allFolders = [];
+  for (let i = 0; i < counter; i++) {
+    const element = await Contract.getCaseFolders(i);
+    const id = parseInt(element[0], 16);
+    obj.id = id;
+    obj.name  = element[1];
+    obj.details = element[2];
+    var jsonString = JSON.stringify(obj);
+    allFolders.push(jsonString);
+  }
+  var foldersJson = JSON.stringify(allFolders)
+  return foldersJson;
 };
 
 export const getCaseFiles = async (caseId) => {

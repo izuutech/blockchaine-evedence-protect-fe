@@ -61,12 +61,22 @@ export const contractABI = [
 				"type": "uint256"
 			}
 		],
-		"name": "getFiles",
+		"name": "getCaseFolders",
 		"outputs": [
 			{
-				"internalType": "string[]",
+				"internalType": "uint256",
 				"name": "",
-				"type": "string[]"
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
 			}
 		],
 		"stateMutability": "view",
@@ -74,34 +84,31 @@ export const contractABI = [
 	},
 	{
 		"inputs": [],
-		"name": "getcaseFolders",
+		"name": "getCounter",
 		"outputs": [
 			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "details",
-						"type": "string"
-					},
-					{
-						"internalType": "string[]",
-						"name": "fileHash",
-						"type": "string[]"
-					}
-				],
-				"internalType": "struct evidenceManager.caseFolder[]",
+				"internalType": "uint256",
 				"name": "",
-				"type": "tuple[]"
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			}
+		],
+		"name": "getFiles",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
 			}
 		],
 		"stateMutability": "view",
